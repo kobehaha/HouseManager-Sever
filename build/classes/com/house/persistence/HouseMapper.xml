@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.house.persistence.HouseMapper">
+	<select id="getAllHousesInfo" resultType="House" parameterType="int">
+		Select * From house
+		where
+		account=#{managerAccount} Order By
+		houseID
+		DESC
+	</select>
+	<select id="getSelledHousesInfoById" resultType="House"
+		parameterType="int">
+		Select * From house
+		where status=1 and
+		account=#{managerAccount} Order By
+		houseID DESC
+	</select>
+	<select id="getHouses" resultType="House" parameterType="int">
+		Select *
+		From house where
+		status=0 and account=#{managerAccount} Order By
+		houseID
+		DESC
+	</select>
+	<select id="getHousesByBuyerID" parameterType="int" resultType="House">
+		Select * From house Where houseID In(Select houseID From bargain
+		Where
+		buyerID_=#{buyerID})
+	</select>
+	<insert id="addHouseInfo" parameterType="House" keyProperty="houseID"
+		useGeneratedKeys="true">
+		Insert Into
+		house(name,location,size,years,price,brief,picture,status,account)
+		values
+		(#{name},#{location},#{size},#{years},#{price},#{brief},#{picture},#{status},#{managerAccount})
+	</insert>
+
+	<delete id="deleteHouseByHouseID" parameterType="Map">
+		Delete From
+		house where houseID=#{houseID}
+	</delete>
+
+
+	<select id="getHouseByPictureUrl" parameterType="House"
+		resultType="House">
+		select * from house where picture=#{picture}
+	</select>
+
+	<update id="selleHouseOk" parameterType="Bargain">
+		update house
+		set
+		status=1
+		where houseId=#{houseId}
+	</update>
+
+	<select id="getHouseInfoByHouseId" parameterType="String"
+		resultType="House">
+		select * from house where houseID=#{houseId}
+	</select>
+
+</mapper>

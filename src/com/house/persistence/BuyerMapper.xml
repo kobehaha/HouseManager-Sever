@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.house.persistence.BuyerMapper">
+
+	<insert id="addBuyer" parameterType="Buyer" useGeneratedKeys="true"
+		keyProperty="buyerID">
+		Insert Into buyer
+		(name,sex,age,phone,weiChat,houseId,createTime,url)Values(#{name},#{sex},#{age},#{phone},#{weiChat},#{houseId},#{createTime},#{url});
+	</insert>
+
+
+	<select id="getBuyer" parameterType="int" resultType="Buyer">
+		Select *
+		From buyer Where buyerID=#{buyerID}
+	</select>
+	<select id="getBuyerIdByBuyerInfo" parameterType="Buyer"
+		resultType="Buyer">
+		select * from buyer where name=#{name}
+		and
+		houseId=#{houseId} and weiChat=#{weiChat} and age=#{age} and
+		phone=#{phone} and createTime=#{createTime}
+	</select>
+	<delete id="deleteBuyerById" parameterType="Buyer">
+		delete from buyer
+		where buyerId=#{buyerID};
+	</delete>
+
+	<update id="updateBuyerHouseIds" parameterType="Buyer">
+		update buyer set houseId=#{houseId} where buyerId=#{buyerID}
+
+	</update>
+
+</mapper>

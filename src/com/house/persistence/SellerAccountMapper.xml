@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.persistence.SellerAccountMapper">
+	<select id="getSellerAccount" parameterType="Map" resultType="SellerAccount">
+		Select * From sellerAccount Where account=#{account} And
+		password=#{password}
+	</select>
+	<!-- <select id="getSellerByAccount" parameterType="SellerAccount" resultType="SellerAccount"> 
+		Select sellerId as "sellerID",account as "account",password as "password",managerId 
+		as "mangerID" From sellerAccount Where account=#{account} </select> -->
+
+	<select id="getSellerByName" parameterType="String" resultType="SellerAccount">
+		Select * From sellerAccount where account=#{account}
+	</select>
+
+
+	<insert id="addSellerAccount" parameterType="SellerAccount">
+		Insert Into
+		sellerAccount Set account=#{account}, password=#{password},
+		manageraccount=#{managerAccount}
+	</insert>
+
+	<select id="selectSeller" parameterType="SellerAccount"
+		resultType="SellerAccount">
+		select * from selleraccount where account=#{sellerAccount}
+		and password=#{sellerPassword}
+	</select>
+
+	<update id="modifyPasswordSeller" parameterType="SellerAccount">
+		update
+		selleraccount set password=#{sellerPassword} where
+		account=#{sellerAccount}
+	</update>
+
+
+</mapper>

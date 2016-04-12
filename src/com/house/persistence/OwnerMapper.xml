@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.house.persistence.OwnerMapper">
+
+	<delete id="deleteOwnerByHouseID" parameterType="Map">
+		Delete From
+		owner where ownerID in (
+		Select ownerID From ownerhouserelation Where
+		houseID=#{houseID})
+	</delete>
+
+	<insert id="addOwner" parameterType="Owner">
+		Insert Into owner
+		(name,age,sex,phone,weiChat,managerAccount,houseID)
+		values(#{name},#{age},#{sex},#{phone},#{weiChat},#{managerAccount},#{houseId})
+	</insert>
+	<select id="getOwnerByHouseId" parameterType="House" resultType="Owner">
+		select * from owner
+		where houseID=#{houseID}
+	</select>
+</mapper>

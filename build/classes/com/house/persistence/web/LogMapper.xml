@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.house.persistence.web.LogMapper">
+
+	<select id="findLogBySessionId" parameterType="String"
+		resultType="int">
+		select * from systemlog where sessionId =#{id}
+	</select>
+
+	<insert id="addLog" parameterType="Log">
+		insert into
+		systemlog(sessionId,role,ip,uri,newest)values(
+		#{id},#{role},#{ip},#{path},#{time})
+	</insert>
+
+	<update id="updateLog" parameterType="Log">
+		update systemlog set newest
+		=#{time} , uri=#{path} where sessionId=#{id}
+
+
+	</update>
+
+
+	<select id="getAllLog" resultType="Log">
+		select * from systemlog
+
+	</select>
+
+</mapper>
