@@ -10,5 +10,5 @@
 ![image](https://github.com/kobehaha/HouseManager-Sever/blob/androidService/images/4.jpg)
 ![image](https://github.com/kobehaha/HouseManager-Sever/blob/androidService/images/5.jpg)
 ![image](https://github.com/kobehaha/HouseManager-Sever/blob/androidService/images/6.jpg)
-![image[(https://github.com/kobehaha/HouseManager-Sever/blob/androidService/images/7.jpg)
+![image](https://github.com/kobehaha/HouseManager-Sever/blob/androidService/images/7.jpg)
 ![image](https://github.com/kobehaha/HouseManager-Sever/blob/androidService/images/8.jpg)
